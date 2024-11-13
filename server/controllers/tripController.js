@@ -18,6 +18,12 @@ const getTripName = async (req, res) => {
     Check for the name query parameter.
     Respond with a JSON object that says "We are going to [name]."
    */
+    const name = req.query.name;
+
+    if (!name) {
+        res.status(400).json("Name query parameter is required")
+    }
+    res.status(200).json({message: `We are going to ${name}.` });
 }
 
 module.exports = { getTrip, getTripName };

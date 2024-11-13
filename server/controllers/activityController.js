@@ -20,6 +20,13 @@ const postActivity = async (req, res) => {
     Otherwise, send a success response back to the client.
     Return a JSON object containing the activity data.
     */
+    const { activity } = req.body;
+    const{ destination, activitySpot, rating, review } = activity;
+    if (!destination || !activitySpot || !rating) {
+        res.status(400).json("Please enter a valid activity")
+    }
+
+    res.status(200).json({ activity });
 }
 
 module.exports = { getActivity, postActivity };
